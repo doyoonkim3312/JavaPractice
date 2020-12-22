@@ -17,16 +17,6 @@ public class Stock {
         return sharePrice;
     }
 
-
-    public static String toString(int usrInput) {
-        return Integer.toString(usrInput);
-    }
-
-    public static String toString(double usrInput) {
-        return Double.toString(usrInput);
-    }
-
-
     public String toString() {
         return "Symbol: " + symbol + "\n" +
                 "Share Price: " + sharePrice;
