@@ -9,6 +9,12 @@ public class Stock {
         sharePrice = newSharePrice;
     }
 
+    //Copy Constructor
+    public Stock(Stock targetObject) {
+        symbol = targetObject.symbol;
+        sharePrice = targetObject.sharePrice;
+    }
+
     public String getSymbol() {
         return symbol;
     }
@@ -23,16 +29,20 @@ public class Stock {
     }
 
     public boolean equals(Stock targetInstance) {
-        if (symbol.equals(targetInstance.symbol) && sharePrice == targetInstance.sharePrice) {
-            return true;
-        } else {
+        if (!symbol.equals(targetInstance.symbol) && sharePrice != targetInstance.sharePrice) {
             return false;
+        } else {
+            return true;
         }
 
         /*
         Code above can be shortened as below:
         'return symbol.equals(targetInstance.symbol) && sharePrice == targetInstance.sharePrice;'
          */
+    }
+
+    public static Stock copy(Stock targetObject) {
+        return new Stock(targetObject.symbol, targetObject.sharePrice);
     }
 
 }
