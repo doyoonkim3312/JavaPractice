@@ -2,7 +2,6 @@ import java.util.*;
 
 public class Playground {
     public static void main(String[] args) {
-
         Scanner usrInput = new Scanner(System.in);
         System.out.println("Create New Person! Type name: ");
         String usrName = usrInput.nextLine();
@@ -32,7 +31,6 @@ public class Playground {
         createdPerson.getAge();
 
         secondCreatedPerson.getUserId();
-
 
     }
 }
