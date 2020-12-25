@@ -7,7 +7,7 @@ public class SuperClassTest3 {
     }
 
     //Overload
-    public void showValue(String arg) {
+    public final void showValue(String arg) {
         System.out.println("SUPERCLASS: the String arg was " + arg);
     }
 }

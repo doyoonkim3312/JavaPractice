@@ -24,7 +24,7 @@ public class GradeActivity {
         return score;
     }
 
-    public Character getGrade() {
+    public char getGrade() {
         if (score >= 90) {
             return 'A';
         } else if (score >= 80) {
