@@ -36,4 +36,10 @@ public class PassFailExam extends PassFailActivity {
     public int getNumMissed() {
         return numMissed;
     }
+
+    public String toString() {
+        //Overridden toString method.
+        System.out.println("Overridden toString method is called");
+        return Integer.toHexString(hashCode());
+    }
 }

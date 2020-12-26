@@ -25,6 +25,7 @@ public class GradeActivity {
     }
 
     public char getGrade() {
+        System.out.println("Original method is called");
         if (score >= 90) {
             return 'A';
         } else if (score >= 80) {

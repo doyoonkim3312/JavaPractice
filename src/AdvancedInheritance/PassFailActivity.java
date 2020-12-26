@@ -21,6 +21,7 @@ public class PassFailActivity extends GradeActivity {
     }
 
     public char getGrade() {
+        System.out.println("Overridden method is called");
         if (super.getScore() >= minPassingScore) {
             return 'P';
         } else {
