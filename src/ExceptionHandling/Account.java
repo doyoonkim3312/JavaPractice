@@ -1,6 +1,9 @@
-/*
-This class is corresponding to 'ReturnObject.java' class.
+package ExceptionHandling;/*
+This class is corresponding to 'ExceptionHandling.AccountDemo.java' class.
+Also corresponding to 'NegativeStartingBalanceException' class.
  */
+
+import ExceptionHandling.NegativeStartingBalanceException;
 
 public class Account {
     private String bankName;
@@ -9,8 +12,23 @@ public class Account {
     private String holderName;
     private double balance;
 
+    /**
+     * This is a recommended constructor.
+     * @param newBankName Name of Bank
+     * @param newAccountNumber Account Number
+     * @param newAccountType Type of Account (either Checking or Saving)
+     * @param newHolderName Name of account holder
+     * @param newBalance initial balance.
+     * @exception NegativeStartingBalanceException This exception will thrown when initial balance is negative.
+     */
     public Account (String newBankName, int newAccountNumber, String newAccountType, String newHolderName,
-                    double newBalance) {
+                    double newBalance) throws NegativeStartingBalanceException {
+
+        if (newBalance < 0.0) {
+            throw new NegativeStartingBalanceException(newBalance);
+            // since NegativeStartingBalanceException is checked exception (inherits from Exception class), method must
+            // notify compiler that NegativeStartingBalanceException might be occurred using throws keyword.
+        }
 
         bankName = newBankName;
         accountNumber = newAccountNumber;

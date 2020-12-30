@@ -27,6 +27,8 @@ public class SalesReport2 {
                 totalSales += sales;
                 months++;
             } catch (Exception e) {
+                // InputMismatchException will possibly occurred.
+
                 JOptionPane.showMessageDialog(null, "Invalid value detected: Skipped this value");
 
                 // Skipped invalid value
@@ -48,6 +50,8 @@ public class SalesReport2 {
         try {
             return new Scanner(file);
         } catch (Exception e) {
+
+            // FileNotFoundException will possibly occurred.
             JOptionPane.showMessageDialog(null, e.toString());
             return null;
         }

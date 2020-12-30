@@ -1,7 +1,9 @@
+package ExceptionHandling;
+
 import javax.swing.*;
 
-public class ReturnObject {
-    public static void main(String[] args) {
+public class AccountDemo {
+    public static void main(String[] args) throws NegativeStartingBalanceException {
 
             Account testAccount = new Account("KB KOOKMIN", 1, "Checking",
                     "DOYOON KIM", 10000.0);
@@ -10,7 +12,13 @@ public class ReturnObject {
 
              while (true) {
                  if (transactionOption == 0) {
+
                      Account createdAccount = accountFactory();
+                     if (createdAccount == null) {
+                         JOptionPane.showMessageDialog(null, "Invalid account is tried to be made.\n" +
+                                 "transaction will be closed");
+                         System.exit(10);
+                     }
 
                      int optionCode = transactionDisplay();
                      while (true) {
@@ -31,9 +39,9 @@ public class ReturnObject {
 
     public static int transactionDisplay() {
         String usrInput = JOptionPane.showInputDialog("Choose the servie you want\n" +
-                "0: Create New Account\n" +
-                "1. Check Account Information\n" +
-                "2. Edit Account Information\n" +
+                "0: Create New ExceptionHandling.Account\n" +
+                "1. Check ExceptionHandling.Account Information\n" +
+                "2. Edit ExceptionHandling.Account Information\n" +
                 "3. Make a Deposit\n" +
                 "4. Withdrawal\n" +
                 "5. Exit");
@@ -54,14 +62,20 @@ public class ReturnObject {
         String holderName = JOptionPane.showInputDialog("Enter Holder's name");
         double balance = Double.parseDouble(JOptionPane.showInputDialog("Enter the balance"));
 
-        return new Account(bankName, accountNumber, accountType, holderName, balance);
+        try {
+            return new Account(bankName, accountNumber, accountType, holderName, balance);
+        } catch (NegativeStartingBalanceException nsbe) {
+            JOptionPane.showMessageDialog(null, "Initial Balance cannot be negative: \n" +
+                    nsbe.getMessage());
+            return null;
+        }
     }
 
     public static int transactions(int optionCode, Account targetAccount) {
         if (optionCode == 1) {
             JOptionPane.showMessageDialog(null, "ACCOUNT INFORMATION\n" +
                     "bank: " + targetAccount.getBankName() + "\n" +
-                    "Account No. :" + targetAccount.getAccountNumber() + "\n" +
+                    "ExceptionHandling.Account No. :" + targetAccount.getAccountNumber() + "\n" +
                     "AccountType: " + targetAccount.getAccountType() + "\n" +
                     "Holder Name: " + targetAccount.getHolderName() + "\n" +
                     "Current Balance: $" + targetAccount.getBalance());
