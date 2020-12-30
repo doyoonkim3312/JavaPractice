@@ -15,6 +15,7 @@ public class OpenFileDemo {
             JOptionPane.showMessageDialog(null, "File is found");
 
         } catch (Exception e) {
+            // Try block would possibly throw FileNotFoundException.a
             JOptionPane.showMessageDialog(null, e.toString() + "\n Exit System");
             // System.exit(0);
         }
